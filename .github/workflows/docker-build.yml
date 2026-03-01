@@ -1,0 +1,37 @@
+name: Build Astro Image
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Get Short SHA
+        id: vars
+        run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+
+      - name: Build and Export to Docker
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          load: false 
+          tags: |
+            astro:latest
+            astro:${{ steps.vars.outputs.sha_short }}
+          outputs: type=docker,dest=/tmp/astro-image.tar
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: astro-docker-${{ steps.vars.outputs.sha_short }}
+          path: /tmp/astro-image.tar
+          retention-days: 7
