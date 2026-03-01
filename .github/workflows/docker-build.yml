@@ -15,10 +15,6 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Get Short SHA
-        id: vars
-        run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
-
       - name: Login to Private Registry
         uses: docker/login-action@v3
         with:
@@ -33,4 +29,4 @@ jobs:
           push: true
           tags: |
             docker.illegalesachen.download/repository/astro-homepage:latest
-            docker.illegalesachen.download/repository/astro-homepage:${{ steps.vars.outputs.sha_short }}
+            docker.illegalesachen.download/repository/astro-homepage:${{ github.sha }}
