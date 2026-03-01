@@ -1,0 +1,46 @@
+---
+import { SITE_TITLE } from '../consts';
+import HeaderLink from './HeaderLink.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<header>
+	<nav>
+		<h2><a href="/">{SITE_TITLE}</a></h2>
+		<ul>
+			{
+			posts.map((post) => (
+			<li>
+				<HeaderLink href={`/blog/${post.id}/`}>{post.data.title}</HeaderLink>
+			</li>
+			))
+			}
+		</ul>
+		</div>
+	</nav>
+</header>
+<style>
+header {
+	display: flex;
+	margin: 0;
+	padding: 0 1em;
+	width: 8vw;
+}
+nav {
+	display: flex;
+	align-items: start;
+	justify-content: space-between;
+	flex-direction: column;
+}
+@media (max-width: 720px) {
+	nav { 
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+}
+</style>
