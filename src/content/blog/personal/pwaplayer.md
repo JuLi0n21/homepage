@@ -21,4 +21,4 @@ Pwa player is a Website that allows u to play and share ur local osu music with 
 
 The Focus is on easy setup, customization and most emportantly Enjoying the music
 
-![homeviwe](../../assets/pwa-player/menu.png)
+![homeviwe](../../../assets/pwa-player/menu.png)
