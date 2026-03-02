@@ -4,16 +4,18 @@ description: 'Lorem ipsum dolor sit amet'
 pubDate: 'Jul 08 2022'
 ---
 <style is:global>
- h1 { color: #eab308 }
- h2 { color: #eab308 }
- h3 { color: #eab308 }
- h4 { color: #eab308 }
- body {background: #1c1719 }
- .wrapper {background: #1c1719 }
- p { color: #ec4889}
- a { color: #ec4889 }
- img { border: 10px solid;
-        border-color: #ec4889; }
+ h1,
+ h2,
+ h3,
+ h4,
+ ul li,
+ figcaption:before { color: #eab308 }
+ body, .wrapper {background: #1c1719 }
+ a, p, ul { color: #ec4889}
+ img {
+     border: 10px solid;
+     border-color: #eab308;
+ }
 </style>
 
 # Osu!Music (Pwa Player)

@@ -3,6 +3,23 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+let images = [];
+let shuffeld = [];
+
+const response = await fetch('https://fshare.kami.boo/api/user/folders/cmm9jbqvt00025omwu5cnpw9i',
+	{
+		headers: {
+			'Authorization': 'MTc3MjQ3ODQ5OTA3OQ==.ZTE1OWU4ZmZlZWNiN2IyODIyYWJmOGU4LjgxZmZiYmM5MGJmZjlmNTZiYmFjYThlMDg4MzFiOTA0NzVlMjYyMGQyMmRkZjVkYWNlMTY3ZGYxMWRjNTQ1YmNiZDMxNzM1MTcyNjU0YjRjODYxY2ViY2I4YWY0MWEyZTQyZDQzYThjZDRmZDkxMjQ0MDRlZmI4ODQ4YWZjYWNlZDEuZTgwNDZjNTgyOTlhYjQyMDdmMTIzNTYxMjk0ZmQ4NWQ=',
+		}
+	});
+if (response.ok) {
+	const data = await response.json();
+	const files = data.files.map(f => `https://fshare.kami.boo${f.url}`).sort(() => Math.random() - .5);
+	const middle = Math.round(files.length / 2);
+	shuffeld = files.slice(0,middle);
+	images = files.slice(middle);
+}
 ---
 
 <!doctype html>
@@ -11,9 +28,133 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
-		<Header />
-		Welcome to this Horrible Website, pick any link from the sidebar.
-		</main>
-		<Footer />
+
+		<div class="layout">
+			<aside class="sidebar">
+				<Header />
+			</aside>
+
+			<main class="scrolling-gallery">
+				<div class="gallery-wrapper">
+					<div class="scroll-track">
+						{images.map((src) => (
+						<div class="tilted-container">
+							<img src={src} alt="" />
+						</div>
+						))}
+
+						{images.map((src) => (
+						<div class="tilted-container">
+							<img src={src} alt="" />
+						</div>
+						))}
+					</div>
+					<div class="scroll-track track-reverse">
+						{shuffeld.slice().reverse().map((src) => (
+						<div class="tilted-container">
+							<img src={src} alt="" />
+						</div>
+						))}
+						{shuffeld.slice().reverse().map((src) => (
+						<div class="tilted-container">
+							<img src={src} alt="" />
+						</div>
+						))}
+					</div>
+				</div>
+			</main>	
+		</div>
 	</body>
 </html>
+
+<style>
+body, html {
+	margin: 0;
+	padding: 0;
+	height: 100vh;
+	overflow: hidden;
+}
+
+main {
+	margin: 1cm;
+	padding: 1cm;
+}
+
+.layout {
+	display: flex;
+	height: 100%;
+	width: 100%;
+}
+
+.sidebar {
+	flex: 0 0 200px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	padding: 0;
+	box-sizing: border-box;
+	z-index: 10;
+	background: rgba(0, 0, 0, 0.5);
+	color: white;
+}
+
+.scrolling-gallery {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	position: relative;
+}
+
+.gallery-wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 4rem;
+	transform: rotate(-8deg) scale(1.3);
+}
+
+.scroll-track {
+	display: flex;
+	gap: 3rem;
+	width: max-content;
+	animation: infiniteScroll 300s linear infinite;
+	padding: 0 2rem;
+}
+
+.track-reverse {
+	animation: infiniteScrollReverse 630s linear infinite;
+}
+
+.tilted-container {
+	width: 220px;
+	height: 280px;
+	flex-shrink: 0;
+	border-radius: 12px;
+	overflow: hidden;
+	transition: transform 0.3s ease;
+	box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.tilted-container:hover {
+	transform: scale(1.05);
+	z-index: 1;
+}
+
+.tilted-container img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+@keyframes infiniteScroll {
+0% { transform: translateX(0); }
+100% { transform: translateX(calc(-50%)); }
+}
+
+@keyframes infiniteScrollReverse {
+0% { transform: translateX(0); }
+100% { transform: translateX(calc(50%)) }
+}
+</style>
