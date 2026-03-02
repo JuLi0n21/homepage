@@ -19,10 +19,10 @@ if (response.ok) {
 	const middle = Math.round(files.length / 2);
 	shuffeld = files.slice(0,middle);
 	images = files.slice(middle);
-} else {
-	console.error("FAILED TO FETCH");
+	} else {
+		console.error("FAILED TO FETCH", response.status, response.message);
 	process.exit(1);
-}
+	}
 
 ---
 
