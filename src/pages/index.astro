@@ -29,7 +29,7 @@ let images =
   'https://fshare.kami.boo/u/5e1e8a74-eba0-4a9a-82a8-a99707d3a536.jpg'
 ].sort(() => Math.random() - .5);
 
-let shuffeld = [
+let shuffeled = [
   'https://fshare.kami.boo/u/7e9423b9-f3f7-412b-af30-45b1a0f4957b.jpg',
   'https://fshare.kami.boo/u/cfe345a2-f91c-4486-a3b1-714c8a5f6279.jpg',
   'https://fshare.kami.boo/u/7ddd3e93-dedf-448d-ae82-1f1182084195.jpg',
@@ -57,9 +57,9 @@ if (response.ok) {
 	const data = await response.json();
 	const files = data.files.map(f => `https://fshare.kami.boo/raw${f.url.substring(2)}`).sort(() => Math.random() - .5);
 	const middle = Math.round(files.length / 2);
-	shuffeld = files.slice(0,middle);
+	shuffeled = files.slice(0,middle);
 	images = files.slice(middle);
-	//console.log(shuffeld)
+	//console.log(shuffeled)
 	//console.log(images)
 	} else {
 		const errorBody = await response.text();
@@ -69,42 +69,42 @@ if (response.ok) {
 
 ---
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
-
 		<div class="layout">
 			<aside class="sidebar">
 				<Header />
 			</aside>
 
+			<!-- Removed redundant alt flag, default dom has alt flag set to "" -->
 			<main class="scrolling-gallery">
 				<div class="gallery-wrapper">
 					<div class="scroll-track">
 						{images.map((src) => (
 						<div class="tilted-container">
-							<img src={src} alt="" />
+							<img src={src} />
 						</div>
 						))}
 
 						{images.map((src) => (
 						<div class="tilted-container">
-							<img src={src} alt="" />
+							<img src={src} />
 						</div>
 						))}
 					</div>
 					<div class="scroll-track track-reverse">
-						{shuffeld.slice().reverse().map((src) => (
+						{shuffeled.slice().reverse().map((src) => (
 						<div class="tilted-container">
-							<img src={src} alt="" />
+							<img src={src} />
 						</div>
 						))}
-						{shuffeld.slice().reverse().map((src) => (
+						{shuffeled.slice().reverse().map((src) => (
 						<div class="tilted-container">
-							<img src={src} alt="" />
+							<img src={src} />
 						</div>
 						))}
 					</div>
@@ -113,6 +113,7 @@ if (response.ok) {
 		</div>
 	</body>
 </html>
+
 
 <style>
 body, html {
