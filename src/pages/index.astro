@@ -52,33 +52,21 @@ let shuffeld = [
   'https://fshare.kami.boo/u/8f5b50a9-567b-4563-9fd6-0d35fafed4f9.jpg'
 ].sort(() => Math.random() - .5);
 
-const response = await fetch('https://fshare.kami.boo/api/server/folder/cmm9jbqvt00025omwu5cnpw9i')
-//const response = await fetch('https://fshare.kami.boo/api/server/folder/cmm0jsnku00077omwof1c8jne') // kamis bgs
-/*const response = await fetch('https://fshare.kami.boo/api/user/folders/cmm9jbqvt00025omwu5cnpw9i',
-	{
-		headers: {
-			'Authorization': 'MTc3MjQ3ODQ5OTA3OQ==.ZTE1OWU4ZmZlZWNiN2IyODIyYWJmOGU4LjgxZmZiYmM5MGJmZjlmNTZiYmFjYThlMDg4MzFiOTA0NzVlMjYyMGQyMmRkZjVkYWNlMTY3ZGYxMWRjNTQ1YmNiZDMxNzM1MTcyNjU0YjRjODYxY2ViY2I4YWY0MWEyZTQyZDQzYThjZDRmZDkxMjQ0MDRlZmI4ODQ4YWZjYWNlZDEuZTgwNDZjNTgyOTlhYjQyMDdmMTIzNTYxMjk0ZmQ4NWQ=',
-			'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-			'Content-Type': 'application/json',
-			'Accept': 'application/json'
-
-		}
-	});
-	*/
+/*const response = await fetch('https://fshare.kami.boo/api/server/folder/cmm9jbqvt00025omwu5cnpw9i')
 if (response.ok) {
 	const data = await response.json();
 	const files = data.files.map(f => `https://fshare.kami.boo${f.url}`).sort(() => Math.random() - .5);
 	const middle = Math.round(files.length / 2);
 	shuffeld = files.slice(0,middle);
 	images = files.slice(middle);
-	console.log(shuffeld)
-	console.log(images)
+	//console.log(shuffeld)
+	//console.log(images)
 	} else {
 		const errorBody = await response.text();
 		console.error("FAILED TO FETCH", response.status, response.statusText, errorBody);
 		process.exit(1);
 	}
-
+*/
 ---
 
 <!doctype html>
