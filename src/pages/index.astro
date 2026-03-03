@@ -52,7 +52,8 @@ let shuffeld = [
   'https://fshare.kami.boo/u/8f5b50a9-567b-4563-9fd6-0d35fafed4f9.jpg'
 ].sort(() => Math.random() - .5);
 
-
+const response = await fetch('https://fshare.kami.boo/api/server/folder/cmm9jbqvt00025omwu5cnpw9i')
+//const response = await fetch('https://fshare.kami.boo/api/server/folder/cmm0jsnku00077omwof1c8jne') // kamis bgs
 /*const response = await fetch('https://fshare.kami.boo/api/user/folders/cmm9jbqvt00025omwu5cnpw9i',
 	{
 		headers: {
@@ -63,6 +64,7 @@ let shuffeld = [
 
 		}
 	});
+	*/
 if (response.ok) {
 	const data = await response.json();
 	const files = data.files.map(f => `https://fshare.kami.boo${f.url}`).sort(() => Math.random() - .5);
@@ -76,7 +78,7 @@ if (response.ok) {
 		console.error("FAILED TO FETCH", response.status, response.statusText, errorBody);
 		process.exit(1);
 	}
-*/
+
 ---
 
 <!doctype html>
