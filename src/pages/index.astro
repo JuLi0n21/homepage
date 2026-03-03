@@ -71,6 +71,97 @@ if (response.ok) {
 <html lang="en">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+		body, html {
+			margin: 0;
+			padding: 0;
+			height: 100vh;
+			overflow: hidden;
+		}
+
+		main {
+			margin: 1cm;
+			padding: 1cm;
+		}
+
+		.layout {
+			display: flex;
+			height: 100%;
+			width: 100%;
+		}
+
+		.sidebar {
+			flex: 0 0 200px;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+			padding: 0;
+			box-sizing: border-box;
+			z-index: 10;
+			background: rgba(0, 0, 0, 0.5);
+			color: white;
+		}
+
+		.scrolling-gallery {
+			flex: 1;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			overflow: hidden;
+			position: relative;
+		}
+
+		.gallery-wrapper {
+			display: flex;
+			flex-direction: column;
+			gap: 4rem;
+			transform: rotate(-8deg) scale(1.3);
+		}
+
+		.scroll-track {
+			display: flex;
+			gap: 3rem;
+			width: max-content;
+			animation: infiniteScroll 300s linear infinite;
+			padding: 0 2rem;
+		}
+
+		.track-reverse {
+			animation: infiniteScrollReverse 630s linear infinite;
+		}
+
+		.tilted-container {
+			width: 220px;
+			height: 280px;
+			flex-shrink: 0;
+			border-radius: 12px;
+			overflow: hidden;
+			transition: transform 0.3s ease;
+			box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+		}
+
+		.tilted-container:hover {
+			transform: scale(1.05);
+			z-index: 1;
+		}
+
+		.tilted-container img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+		}
+
+		@keyframes infiniteScroll {
+		0% { transform: translateX(0); }
+		100% { transform: translateX(calc(-50%)); }
+		}
+
+		@keyframes infiniteScrollReverse {
+		0% { transform: translateX(0); }
+		100% { transform: translateX(calc(50%)) }
+		}
+		</style>
 	</head>
 	<body>
 		<div class="layout">
@@ -113,94 +204,4 @@ if (response.ok) {
 </html>
 
 
-<style>
-body, html {
-	margin: 0;
-	padding: 0;
-	height: 100vh;
-	overflow: hidden;
-}
-
-main {
-	margin: 1cm;
-	padding: 1cm;
-}
-
-.layout {
-	display: flex;
-	height: 100%;
-	width: 100%;
-}
-
-.sidebar {
-	flex: 0 0 200px;
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	padding: 0;
-	box-sizing: border-box;
-	z-index: 10;
-	background: rgba(0, 0, 0, 0.5);
-	color: white;
-}
-
-.scrolling-gallery {
-	flex: 1;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	overflow: hidden;
-	position: relative;
-}
-
-.gallery-wrapper {
-	display: flex;
-	flex-direction: column;
-	gap: 4rem;
-	transform: rotate(-8deg) scale(1.3);
-}
-
-.scroll-track {
-	display: flex;
-	gap: 3rem;
-	width: max-content;
-	animation: infiniteScroll 300s linear infinite;
-	padding: 0 2rem;
-}
-
-.track-reverse {
-	animation: infiniteScrollReverse 630s linear infinite;
-}
-
-.tilted-container {
-	width: 220px;
-	height: 280px;
-	flex-shrink: 0;
-	border-radius: 12px;
-	overflow: hidden;
-	transition: transform 0.3s ease;
-	box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-
-.tilted-container:hover {
-	transform: scale(1.05);
-	z-index: 1;
-}
-
-.tilted-container img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	display: block;
-}
-
-@keyframes infiniteScroll {
-0% { transform: translateX(0); }
-100% { transform: translateX(calc(-50%)); }
-}
-
-@keyframes infiniteScrollReverse {
-0% { transform: translateX(0); }
-100% { transform: translateX(calc(50%)) }
-}
-</style>
+<!-- import Footer from '@components/Footer.astro'; -->
