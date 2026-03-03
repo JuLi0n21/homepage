@@ -46,4 +46,4 @@ The idea was to extend the concept and make it easy to share local scores only, 
 - golang
 - a-h/templ + tailwind
 - Sqlite as DB
-![Score](../../../assets/osuProgress/scorePage.png)
+![Score](@assets/osuProgress/scorePage.png)

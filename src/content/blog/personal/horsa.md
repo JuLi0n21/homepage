@@ -31,5 +31,4 @@ Horsa is an Mobile First all in One Solution for ur BlackSmithing Shop
 - Inventory Management
 - WorkUnit preperation 
 
-![homeviwe](../../../assets/horsa/invoices.png)
-
+![homeview](@assets/horsa/invoices.png)
