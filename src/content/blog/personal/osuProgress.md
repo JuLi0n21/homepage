@@ -1,8 +1,9 @@
 ---
-title: 'osu!Progress'
-description: 'Lorem ipsum dolor sit amet'
-pubDate: 'Jun 20 2024'
+title: "osu!Progress"
+description: "Lorem ipsum dolor sit amet"
+pubDate: "Jun 20 2024"
 ---
+
 <style is:global>
 h1,
 h2,
@@ -16,6 +17,7 @@ img {
     border-color: #aaaeaf;
 }
 </style>
+
 # osu!Progress - track ur scores and time wasted
 
 ## Features
@@ -35,10 +37,11 @@ img {
 
 - C#
 - Liquid for Templates
-- Tailwind for Styling 
+- Tailwind for Styling
 - Sqlite as DB
 
 ## Canceld Extension - [osuProgress Server](https://github.com/JuLi0n21/osuprogressserver)
+
 The idea was to extend the concept and make it easy to share local scores only, due to lazer not being supported by the score extraction library at the time and now live score feed being established went no where
 
 # Arcitectur
@@ -46,4 +49,4 @@ The idea was to extend the concept and make it easy to share local scores only, 
 - golang
 - a-h/templ + tailwind
 - Sqlite as DB
-![Score](@assets/osuProgress/scorePage.png)
+  ![Score](@assets/osuProgress/scorePage.png)

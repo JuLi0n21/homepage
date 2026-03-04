@@ -1,8 +1,9 @@
 ---
-title: 'pwa-player'
-description: 'Lorem ipsum dolor sit amet'
-pubDate: 'Jul 08 2022'
+title: "pwa-player"
+description: "Lorem ipsum dolor sit amet"
+pubDate: "Jul 08 2022"
 ---
+
 <style is:global>
  h1,
  h2,
@@ -19,6 +20,7 @@ pubDate: 'Jul 08 2022'
 </style>
 
 # Osu!Music (Pwa Player)
+
 Pwa player is a Website that allows u to play and share ur local osu music with ur friends and listen to it on the go
 
 The Focus is on easy setup, customization and most emportantly Enjoying the music

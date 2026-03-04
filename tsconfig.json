@@ -4,8 +4,8 @@
   "exclude": ["dist"],
   "compilerOptions": {
     "strictNullChecks": true,
-      "paths": {
-        /** Uncomment as applicable
+    "paths": {
+      /** Uncomment as applicable
          * - Description: Labelled paths are in lexicon format not descending popularity format
         // "config/*": ["./src/app/_config/*"],
         // "environment/*": ["./src/environments/*"],
@@ -13,13 +13,13 @@
         // "helpers/*": ["./src/helpers/*"],
         // "tests/*": ["./src/tests/*"]
         */
-        "@app/*": ["./src/pages/*"],
-        "@assets/*": ["./src/assets/*"],
-        "@blogs/*": ["./src/content/*"],
-        "@components/*": ["./src/components/*"],
-        "@layouts/*": ["./src/layouts/*"],
-        "@styles/*": ["./src/styles/*"],
-        "@ptypes/consts.ts": ["./src/consts.ts"],
-      }
+      "@app/*": ["./src/pages/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@blogs/*": ["./src/content/*"],
+      "@components/*": ["./src/components/*"],
+      "@layouts/*": ["./src/layouts/*"],
+      "@styles/*": ["./src/styles/*"],
+      "@ptypes/consts.ts": ["./src/consts.ts"]
+    }
   }
 }

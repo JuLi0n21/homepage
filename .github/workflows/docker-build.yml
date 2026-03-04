@@ -2,7 +2,7 @@ name: Build and Push Astro Image
 
 on:
   push:
-    branches: [ "master" ]
+    branches: ["master"]
 
 jobs:
   build:

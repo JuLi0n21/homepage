@@ -1,9 +1,10 @@
 ---
-title: 'Horsa'
-description: 'Lorem ipsum dolor sit amet'
-pubDate: 'Feb 27 2026'
-gitLink: 'https://github.com/juli0n21/horsa'
+title: "Horsa"
+description: "Lorem ipsum dolor sit amet"
+pubDate: "Feb 27 2026"
+gitLink: "https://github.com/juli0n21/horsa"
 ---
+
 <style is:global>
 h1,
 h2,
@@ -19,16 +20,18 @@ img {
     border-color: #bb4d00; 
 }
 </style>
+
 # Horsa Haas HorseShoe as a Service
 
 Horsa is an Mobile First all in One Solution for ur BlackSmithing Shop
 
 ## Features
+
 - Invoice Management
 - Appointment Planning
 - Automatic VRT planning
 - Customer Management
 - Inventory Management
-- WorkUnit preperation 
+- WorkUnit preperation
 
 ![homeview](@assets/horsa/invoices.png)

@@ -14,6 +14,7 @@
         packages = with pkgs; [
           nodejs_25
           nodePackages.npm
+          prettier
         ];
 
         env = {

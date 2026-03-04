@@ -3,62 +3,16 @@ import BaseHead from '@components/BaseHead.astro';
 import Header from '@components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '@ptypes/consts.ts';
 
-let images = [
-  'https://fshare.kami.boo/u/xH0KLo.jpg',
-  'https://fshare.kami.boo/u/a0a2234c-b361-425f-8794-612c7c9fbafe.jpg',
-  'https://fshare.kami.boo/u/7ceef00c-35cf-4a2f-bec1-0fb489db5f7c.jpg',
-  'https://fshare.kami.boo/u/1dc11a22-b492-4d83-b39f-08dc46033c68.jpg',
-  'https://fshare.kami.boo/u/ede1face-6905-47a2-bf44-7c2bf73206e3.jpg',
-  'https://fshare.kami.boo/u/a5fcf2c4-4f2e-4070-a798-0fbc82bd9c78.jpg',
-  'https://fshare.kami.boo/u/7e772637-8deb-474e-b0af-6a28823d81cd.jpg',
-  'https://fshare.kami.boo/u/54362679-999f-48e3-8ccd-74265a70bfdf.jpg',
-  'https://fshare.kami.boo/u/08db3d3f-2a60-4298-a348-06c5cdb7a76e.jpg',
-  'https://fshare.kami.boo/u/c99e11e5-860e-4db6-b34e-15f2161f0eed.jpg',
-  'https://fshare.kami.boo/u/ILaX7V.jpg',
-  'https://fshare.kami.boo/u/3a54d27d-cd50-4042-af12-58548ac4bc18.jpg',
-  'https://fshare.kami.boo/u/0bd180d7-64e2-4873-b1fc-b5019668cfdb.jpg',
-  'https://fshare.kami.boo/u/939f2614-a85a-4a24-8920-992cd93a57cf.jpg',
-  'https://fshare.kami.boo/u/cb877b4c-202f-42db-91f7-84cc8807985d.jpg',
-  'https://fshare.kami.boo/u/l8LvNF.jpg',
-  'https://fshare.kami.boo/u/ee1a2ad8-0989-4b08-8b50-2477c1ecb4cd.jpg',
-  'https://fshare.kami.boo/u/5d0272fd-a693-4940-a110-c731ca03e5f5.jpg',
-  'https://fshare.kami.boo/u/f8422aae-671c-4dc5-8f47-7088b230c8b9.jpg',
-  'https://fshare.kami.boo/u/e0b096d5-eaac-4185-8049-e9e4e6e517ec.jpg',
-  'https://fshare.kami.boo/u/5e1e8a74-eba0-4a9a-82a8-a99707d3a536.jpg'
-].sort(() => Math.random() - .5);
-
-let shuffeled = [
-  'https://fshare.kami.boo/u/7e9423b9-f3f7-412b-af30-45b1a0f4957b.jpg',
-  'https://fshare.kami.boo/u/cfe345a2-f91c-4486-a3b1-714c8a5f6279.jpg',
-  'https://fshare.kami.boo/u/7ddd3e93-dedf-448d-ae82-1f1182084195.jpg',
-  'https://fshare.kami.boo/u/9129a055-ceb9-49f1-a549-a3e5e4dc1629.jpg',
-  'https://fshare.kami.boo/u/ccdfe9bc-e317-4dcd-9c6c-7f7491cf34a2.jpg',
-  'https://fshare.kami.boo/u/40ba2a78-2aaf-4f85-a722-f918d8095a72.jpg',
-  'https://fshare.kami.boo/u/dc64b765-aac1-454a-a40c-8599b7581690.jpg',
-  'https://fshare.kami.boo/u/7399f2a9-28f7-4c43-9890-6cc681ec7ecf.jpg',
-  'https://fshare.kami.boo/u/efee574e-3945-46e4-8d4e-9b132561fef0.jpg',
-  'https://fshare.kami.boo/u/230fd5a9-ef97-4bbb-a997-ef11accb5da4.jpg',
-  'https://fshare.kami.boo/u/43be89ba-2d40-402b-90ee-bcb1e6ffd789.jpg',
-  'https://fshare.kami.boo/u/4093c11f-c1f0-4a18-8e1c-60404eafafb5.jpg',
-  'https://fshare.kami.boo/u/cd2ffbbc-56be-4643-8540-9297c74dc8dd.jpg',
-  'https://fshare.kami.boo/u/0db3ec0a-d325-4f75-a0e9-57e1b3d39025.jpg',
-  'https://fshare.kami.boo/u/b5ffd08b-5200-4208-8c27-c1f0f30754d5.jpg',
-  'https://fshare.kami.boo/u/3ef0ae02-5cb1-4560-843f-d9fd4637b05e.jpg',
-  'https://fshare.kami.boo/u/a1c71338-579d-4e81-8edb-c1b9b243c748.jpg',
-  'https://fshare.kami.boo/u/d0e8a4cd-a04e-46dd-a22f-5d66bc5bfbb8.jpg',
-  'https://fshare.kami.boo/u/bb229c83-0755-4c5f-a1d3-5a7edf2bd8c7.jpg',
-  'https://fshare.kami.boo/u/8f5b50a9-567b-4563-9fd6-0d35fafed4f9.jpg'
-].sort(() => Math.random() - .5);
+let shuffled: string[] = [];
+let images: string[] = [];
 
 const response = await fetch('https://fshare.kami.boo/api/server/folder/cmm9jbqvt00025omwu5cnpw9i')
 if (response.ok) {
 	const data = await response.json();
-	const files = data.files.map((f: Response) => `https://fshare.kami.boo/raw${f.url.substring(2)}`).sort(() => Math.random() - .5);
+	const files = data.files.map((f: Response) => `https://fshare.kami.boo/raw${f.url.substring(2)}`).sort(() => Math.random() - .5) as string[];
 	const middle = Math.round(files.length / 2);
-	shuffeled = files.slice(0,middle);
+	shuffled = files.slice(0,middle);
 	images = files.slice(middle);
-	//console.log(shuffeled)
-	//console.log(images)
 	} else {
 		const errorBody = await response.text();
 		console.error("FAILED TO FETCH", response.status, response.statusText, errorBody);
@@ -186,12 +140,12 @@ if (response.ok) {
 						))}
 					</div>
 					<div class="scroll-track track-reverse">
-						{shuffeled.slice().reverse().map((src) => (
+						{shuffled.slice().reverse().map((src) => (
 						<div class="tilted-container">
 							<img src={src} />
 						</div>
 						))}
-						{shuffeled.slice().reverse().map((src) => (
+						{shuffled.slice().reverse().map((src) => (
 						<div class="tilted-container">
 							<img src={src} />
 						</div>
