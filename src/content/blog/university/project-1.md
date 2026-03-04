@@ -1,8 +1,9 @@
 ---
-title: 'Project-1'
-description: 'Lorem ipsum dolor sit amet'
-pubDate: 'Jul 08 2022'
+title: "Project-1"
+description: "Lorem ipsum dolor sit amet"
+pubDate: "Jul 08 2022"
 ---
+
 <style is:global>
 h1,
 h2,

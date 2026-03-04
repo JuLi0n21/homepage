@@ -1,8 +1,9 @@
 ---
-title: 'Deployment'
-description: 'Lorem ipsum dolor sit amet'
-pubDate: 'Mar 02 2026'
+title: "Deployment"
+description: "Lorem ipsum dolor sit amet"
+pubDate: "Mar 02 2026"
 ---
+
 <style is:global>
 h1,
 h2,
@@ -25,10 +26,11 @@ img {
     justify-content: space-between;
 }
 </style>
+
 # Here is A List of Frequently Used Services for Easy Access <3
 
-
 //extract the fucking uhh thingy ma bob
+
 <ul>
     <li>
         <a href="https://horsa.illegalesachen.download">
@@ -60,4 +62,3 @@ img {
 <a href="https://docker-ui.illegalesachen.download/"><img src="https://docker-ui.illegalesachen.download/favicon.ico" heigth="100px" width="100px" /></a>
     </li>
 </ul>
-

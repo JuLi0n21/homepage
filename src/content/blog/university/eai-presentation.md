@@ -1,8 +1,9 @@
 ---
-title: 'eai-presentation-frameworks'
-description: 'Lorem ipsum dolor sit amet'
-pubDate: 'Jul 08 2022'
+title: "eai-presentation-frameworks"
+description: "Lorem ipsum dolor sit amet"
+pubDate: "Jul 08 2022"
 ---
+
 <style is:global>
 h1,
 h2,

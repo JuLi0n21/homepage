@@ -3,6 +3,23 @@
   "include": [".astro/types.d.ts", "**/*"],
   "exclude": ["dist"],
   "compilerOptions": {
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "paths": {
+      /** Uncomment as applicable
+         * - Description: Labelled paths are in lexicon format not descending popularity format
+        // "config/*": ["./src/app/_config/*"],
+        // "environment/*": ["./src/environments/*"],
+        // "shared/*": ["./src/app/_shared/*"],
+        // "helpers/*": ["./src/helpers/*"],
+        // "tests/*": ["./src/tests/*"]
+        */
+      "@app/*": ["./src/pages/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@blogs/*": ["./src/content/*"],
+      "@components/*": ["./src/components/*"],
+      "@layouts/*": ["./src/layouts/*"],
+      "@styles/*": ["./src/styles/*"],
+      "@ptypes/consts.ts": ["./src/consts.ts"]
+    }
   }
 }

@@ -1,19 +1,40 @@
 ---
-import { Image } from 'astro:assets';
-import type { CollectionEntry } from 'astro:content';
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import FormattedDate from '../components/FormattedDate.astro';
-import Header from '../components/Header.astro';
-import GithubIcon from '../assets/github.svg'
-type Props = CollectionEntry<'blog'>['data'];
+import BaseHead from '@components/BaseHead.astro';
+import Header from '@components/Header.astro';
+import GithubIcon from '@assets/github.svg'
 
-const { title, description, pubDate, updatedDate, gitLink } = Astro.props;
+const { title, description, gitLink } = Astro.props;
 ---
 
 <html lang="en">
 	<head>
 		<BaseHead title={title} description={description} />
+		<!-- To add meta data here later -->
+		<style>
+		body { 
+			display:flex; 
+			flex-direction: row;
+		}
+		main { display: flex; 
+			flex-direction: row;
+			align-items: start;
+			justify-content: space-between;
+			padding: 0;
+			margin: 0;
+			flex-grow: 1;
+		}
+
+		.wrapper {
+			display: flex;
+			flex-direction: column;
+			flex-grow: 1;
+			min-width: 0;
+			width: 0;
+			padding: 1cm;
+			margin: 1cm;
+		}
+
+		</style>
 	</head>
 
 	<body>
@@ -29,28 +50,3 @@ const { title, description, pubDate, updatedDate, gitLink } = Astro.props;
 		</main>
 	</body>
 </html>
-<style>
-body { 
-	display:flex; 
-	flex-direction: row;
-}
-main { display: flex; 
-	flex-direction: row;
-	align-items: start;
-	justify-content: space-between;
-	padding: 0;
-	margin: 0;
-	flex-grow: 1;
-}
-
-.wrapper {
-	display: flex;
-	flex-direction: column;
-	flex-grow: 1;
-	min-width: 0;
-	width: 0;
-	padding: 1cm;
-	margin: 1cm;
-}
-
-</style>
