@@ -5,7 +5,6 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '@ptypes/consts.ts';
 
 let shuffled: string[] = [];
 let images: string[] = [];
-const folder: string = 'https://fshare.kami.boo/folder/cmm9jbqvt00025omwu5cnpw9i';
 const api: string = 'https://fshare.kami.boo/api/server/folder/cmm9jbqvt00025omwu5cnpw9i';
 const response = await fetch(api)
 if (response.ok) {
@@ -129,25 +128,25 @@ if (response.ok) {
 				<div class="gallery-wrapper">
 					<div class="scroll-track">
 						{images.map((src) => (
-						<a class="tilted-container" href={folder} target="_blank">
+						<a class="tilted-container" href={src} target="_blank">
 							<img src={src} />
 						</a>
 						))}
 
 						{images.map((src) => (
-						<a class="tilted-container" href={folder} target="_blank">
+						<a class="tilted-container" href={src} target="_blank">
 							<img src={src} />
 						</a>
 						))}
 					</div>
 					<div class="scroll-track track-reverse">
 						{shuffled.slice().reverse().map((src) => (
-						<a class="tilted-container" href={folder} target="_blank">
+						<a class="tilted-container" href={src} target="_blank">
 							<img src={src} />
 						</a>
 						))}
 						{shuffled.slice().reverse().map((src) => (
-						<a class="tilted-container" href={folder} target="_blank">
+						<a class="tilted-container" href={src} target="_blank">
 							<img src={src} />
 						</a>
 						))}
