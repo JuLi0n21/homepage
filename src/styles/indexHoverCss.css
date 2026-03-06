@@ -1,0 +1,75 @@
+/**
+  * author - Kami aka VlxtIykg on github
+  * description - cool CSS hover effects
+*/
+nav {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  flex-direction: column;
+  anchor-name: --active-nav;
+  margin: 0 1rem;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  color: black !important;
+}
+
+@media (max-width: 720px) {
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+nav::after {
+  content: '';
+  /* background: oklch(0.7 0.1 344); */
+  /* border: 2px solid deeppink; */
+  /* box-shadow: inset 0 0 12px oklch(0.29 0.1 344); */
+  background: #ababab;
+  /* border: 2px solid black; */
+  box-shadow: inset 0 0 12px #6d5d5e;
+
+  /* border-radius: 2rem; */
+  /* corner-shape: squircle; */
+
+  position: absolute;
+  position-anchor: --active-nav;
+  left: anchor(left);
+  right: anchor(right);
+  top: anchor(top);
+  bottom: anchor(bottom);
+
+  z-index: -1000;
+
+  padding: 1rem;
+  box-sizing: border-box;
+  transition: inset 750ms;
+}
+
+/* Why do you even have a header?? */
+/* header { */
+/* display: flex; */
+/* margin: 0; */
+/* padding: 0 1em; */
+/* width: 8vw; */
+/* } */
+
+li :is(:hover, :focus-visible) {
+  anchor-name: --active-nav;
+}
+
+nav ul {
+  list-style-type: none;
+}
+
+nav ul li {
+  padding: .5rem 0;
+  align-content: center;
+}
+
+nav ul li a {
+  padding: .5rem;
+  text-align: left;
+}
