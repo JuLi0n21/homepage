@@ -23,16 +23,8 @@ nav {
 }
 
 nav::after {
-  content: '';
-  /* background: oklch(0.7 0.1 344); */
-  /* border: 2px solid deeppink; */
-  /* box-shadow: inset 0 0 12px oklch(0.29 0.1 344); */
+  content: "";
   background: #ababab;
-  /* border: 2px solid black; */
-  box-shadow: inset 0 0 12px #6d5d5e;
-
-  /* border-radius: 2rem; */
-  /* corner-shape: squircle; */
 
   position: absolute;
   position-anchor: --active-nav;
@@ -45,31 +37,30 @@ nav::after {
 
   padding: 1rem;
   box-sizing: border-box;
-  transition: inset 750ms;
+  transition: inset 150ms;
 }
-
-/* Why do you even have a header?? */
-/* header { */
-/* display: flex; */
-/* margin: 0; */
-/* padding: 0 1em; */
-/* width: 8vw; */
-/* } */
 
 li :is(:hover, :focus-visible) {
   anchor-name: --active-nav;
 }
 
+nav {
+  overflow: hidden;
+  padding: 1;
+  margin: 1;
+}
+
 nav ul {
   list-style-type: none;
+  overflow: auto;
 }
 
 nav ul li {
-  padding: .5rem 0;
+  padding: 0.1rem 0;
   align-content: center;
 }
 
 nav ul li a {
-  padding: .5rem;
+  padding: 0.2rem;
   text-align: left;
 }

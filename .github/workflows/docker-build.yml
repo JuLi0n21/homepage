@@ -2,7 +2,7 @@ name: Build and Push Astro Homepage
 
 on:
   push:
-    branches: [ "master" ]
+    branches: ["master"]
   workflow_dispatch:
 
 jobs:

@@ -10,7 +10,7 @@ h2,
 h3,
 h4, ul li { color: #c8cacb }
 body { background: #171a1c }
-.wrapper {background: #22282a }
+.wrapper, nav::after  {background: #22282a }
 p, a, ul { color: #cda637 }
 img {
     border: 10px solid;

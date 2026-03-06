@@ -11,7 +11,7 @@ pubDate: "Jul 08 2022"
  h4,
  ul li,
  figcaption:before { color: #eab308 }
- body, .wrapper {background: #1c1719 }
+ body, .wrapper, nav::after  {background: #1c1719 }
  a, p, ul { color: #ec4889}
  img {
      border: 10px solid;

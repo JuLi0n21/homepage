@@ -11,8 +11,8 @@ h3,
 h4, 
 ul li,
 figcaption::before { color: #f90f91 }
-body {background: #19171a }
-.wrapper {background: #0a090a }
+body { background: #19171a }
+.wrapper, nav::after {background: #0a090a }
 p, a, ul { color: #e2e2e2}
 img { 
     border: 10px solid;

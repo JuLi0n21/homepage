@@ -68,10 +68,10 @@ b {
   font-weight: 700;
 }
 a {
-  color: var(--accent);
+  color: #734f96;
 }
 a:hover {
-  color: var(--accent);
+  color: var(--help);
 }
 p {
   margin-bottom: 1em;
