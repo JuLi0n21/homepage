@@ -1,0 +1,66 @@
+/**
+  * author - Kami aka VlxtIykg on github
+  * description - cool CSS hover effects
+*/
+nav {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  flex-direction: column;
+  anchor-name: --active-nav;
+  margin: 0 1rem;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  color: black !important;
+}
+
+@media (max-width: 720px) {
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+nav::after {
+  content: "";
+  background: #ababab;
+
+  position: absolute;
+  position-anchor: --active-nav;
+  left: anchor(left);
+  right: anchor(right);
+  top: anchor(top);
+  bottom: anchor(bottom);
+
+  z-index: -1000;
+
+  padding: 1rem;
+  box-sizing: border-box;
+  transition: inset 150ms;
+}
+
+li :is(:hover, :focus-visible) {
+  anchor-name: --active-nav;
+}
+
+nav {
+  overflow: hidden;
+  padding: 1;
+  margin: 1;
+}
+
+nav ul {
+  list-style-type: none;
+  overflow: auto;
+}
+
+nav ul li {
+  padding: 0.1rem 0;
+  align-content: center;
+}
+
+nav ul li a {
+  padding: 0.2rem;
+  text-align: left;
+}
