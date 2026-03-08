@@ -13,7 +13,7 @@ body { background: #171a1c }
 .wrapper, nav::after  {background: #22282a }
 p, a, ul { color: #cda637 }
 img {
-    border: 10px solid;
+    border: 5px solid;
     border-color: #aaaeaf;
 }
 </style>

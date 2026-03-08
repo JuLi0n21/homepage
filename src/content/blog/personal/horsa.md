@@ -16,7 +16,7 @@ body {background: #27272a }
 .wrapper, nav::after  {background: #18181b }
 p, a, ul { color: #e2e2e2}
 img {
-    border: 10px solid;
+    border: 5px solid;
     border-color: #bb4d00; 
 }
 </style>

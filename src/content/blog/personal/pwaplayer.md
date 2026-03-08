@@ -14,7 +14,7 @@ pubDate: "Jul 08 2022"
  body, .wrapper, nav::after  {background: #1c1719 }
  a, p, ul { color: #ec4889}
  img {
-     border: 10px solid;
+     border: 5px solid;
      border-color: #eab308;
  }
 </style>
