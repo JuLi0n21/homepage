@@ -1,6 +1,7 @@
 ---
 import { SITE_TITLE } from '@ptypes/consts.ts';
 import HeaderLink from '@components/HeaderLink.astro';
+import '@styles/indexHoverCss.css';
 import { getCollection } from 'astro:content';
 
 const personalPosts = (await getCollection('personal')).sort(
@@ -10,51 +11,36 @@ const uniPosts = (await getCollection('uni')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 ---
-
-<header>
-	<nav>
-		<h2><a href="/">{SITE_TITLE}</a></h2>
-		<ul>
-			<h4>Personal</h4>
-			{
-			personalPosts.map((post) => (
-			<li>
-				<HeaderLink href={`/blog/personal/${post.id}/`}>{post.data.title}</HeaderLink>
-			</li>
-			))
-			}
-			<hr>
-			<h4>University</h4>
-			<h6>(Group Projects)</h6>
-			{
-			uniPosts.map((post) => (
-			<li>
-				<HeaderLink href={`/blog/university/${post.id}/`}>{post.data.title}</HeaderLink>
-			</li>
-			))
-			}
-		</ul>
-		</div>
-	</nav>
-</header>
-<style>
-header {
-	display: flex;
-	margin: 0;
-	padding: 0 1em;
-	width: 8vw;
-}
-nav {
-	display: flex;
-	align-items: start;
-	justify-content: space-between;
-	flex-direction: column;
-}
-@media (max-width: 720px) {
-	nav { 
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-	}
-}
-</style>
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+		</style>
+	</head>
+	<body>
+			<nav>
+				<h2><a href="/">{SITE_TITLE}</a></h2>
+				<ul>
+					<h4>Personal</h4>
+					{
+					personalPosts.map((post) => (
+					<li>
+						<HeaderLink href={`/blog/personal/${post.id}/`}>{post.data.title}</HeaderLink>
+					</li>
+					))
+					}
+					<hr>
+					<h4>University</h4>
+					<h6>(Group Projects)</h6>
+					{
+					uniPosts.map((post) => (
+					<li>
+						<HeaderLink href={`/blog/university/${post.id}/`}>{post.data.title}</HeaderLink>
+					</li>
+					))
+					}
+				</ul>
+				</div>
+			</nav>
+	</body>
+</html>

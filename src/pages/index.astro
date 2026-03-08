@@ -26,18 +26,6 @@ if (response.ok) {
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 		<style>
-		body, html {
-			margin: 0;
-			padding: 0;
-			height: 100vh;
-			overflow: hidden;
-		}
-
-		main {
-			margin: 1cm;
-			padding: 1cm;
-		}
-
 		.layout {
 			display: flex;
 			height: 100%;
@@ -45,8 +33,7 @@ if (response.ok) {
 		}
 
 		.sidebar {
-			flex: 0 0 200px;
-			height: 100%;
+			height: 100vh;
 			display: flex;
 			flex-direction: column;
 			padding: 0;
@@ -63,6 +50,12 @@ if (response.ok) {
 			justify-content: center;
 			overflow: hidden;
 			position: relative;
+			margin: 1cm;
+		}
+
+		main {
+			background: white;
+			overflow: hidden;
 		}
 
 		.gallery-wrapper {
@@ -76,12 +69,12 @@ if (response.ok) {
 			display: flex;
 			gap: 3rem;
 			width: max-content;
-			animation: infiniteScroll 300s linear infinite;
+			animation: infiniteScroll 500s linear infinite;
 			padding: 0 2rem;
 		}
 
 		.track-reverse {
-			animation: infiniteScrollReverse 630s linear infinite;
+			animation: infiniteScrollReverse 600s linear infinite;
 		}
 
 		.tilted-container {
@@ -107,13 +100,13 @@ if (response.ok) {
 		}
 
 		@keyframes infiniteScroll {
-		0% { transform: translateX(0); }
-		100% { transform: translateX(calc(-50%)); }
+		0% { transform: translateX(0%); }
+		100% { transform: translateX(-50%); }
 		}
 
 		@keyframes infiniteScrollReverse {
-		0% { transform: translateX(0); }
-		100% { transform: translateX(calc(50%)) }
+		0% { transform: translateX(0%); }
+		100% { transform: translateX(50%) }
 		}
 		</style>
 	</head>
@@ -123,39 +116,28 @@ if (response.ok) {
 				<Header />
 			</aside>
 
-			<!-- Removed redundant alt flag, default dom has alt flag set to "" -->
 			<main class="scrolling-gallery">
 				<div class="gallery-wrapper">
 					<div class="scroll-track">
-						{images.map((src) => (
+						{[...images, ...images].map((src) => (
 						<a class="tilted-container" href={src} target="_blank">
-							<img src={src} />
-						</a>
-						))}
-
-						{images.map((src) => (
-						<a class="tilted-container" href={src} target="_blank">
-							<img src={src} />
+							<img src={src} loading="lazy" />
 						</a>
 						))}
 					</div>
+					{
+
+					}
 					<div class="scroll-track track-reverse">
-						{shuffled.slice().reverse().map((src) => (
+						{[...shuffled,...shuffled].map((src) => (
 						<a class="tilted-container" href={src} target="_blank">
-							<img src={src} />
+							<img src={src} loading="lazy" />
 						</a>
-						))}
-						{shuffled.slice().reverse().map((src) => (
-						<a class="tilted-container" href={src} target="_blank">
-							<img src={src} />
-						</a>
-						))}
+						))
+					}
 					</div>
 				</div>
-			</main>	
+			</main>
 		</div>
 	</body>
 </html>
-
-
-<!-- import Footer from '@components/Footer.astro'; -->
