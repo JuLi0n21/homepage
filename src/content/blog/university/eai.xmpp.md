@@ -27,10 +27,10 @@ To deepen the Lecture we created a custom Xmpp client that implements common fea
 
 - Creating a public channel, where multiple users can join
 - See Online Users
-![publicChat](@assets/eai-xmpp/publicChat.png)
+  ![publicChat](@assets/eai-xmpp/publicChat.png)
 
 - Write Private Chat Messages
 - write them with `/msg Username [message]
-![privateChat](@assets/eai-xmpp/privateChat.png)
+  ![privateChat](@assets/eai-xmpp/privateChat.png)
 
 switch with Tab

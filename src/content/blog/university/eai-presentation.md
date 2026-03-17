@@ -30,6 +30,5 @@ In the past this was commonly done using IFrames, while their straight forward t
 # this is hidden?
 
 The Microfrontend is inserted as an IFrame otherwise check it out
-<a target="_blank" href="https://eai-presentation-frameworks.illegalesachen.download/">here</a> 
+<a target="_blank" href="https://eai-presentation-frameworks.illegalesachen.download/">here</a>
 as fullpage.
-

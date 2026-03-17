@@ -4,7 +4,13 @@ description: "Lorem ipsum dolor sit amet"
 pubDate: "Mar 02 2026"
 ---
 
-import GithubIcon from '@assets/github.svg'
+import { Image } from "astro:assets";
+import GithubIcon from "@assets/github.svg";
+import frameworkClosed from "@assets/homepage/frameworkclosed.jpg";
+import frameworkOpen from "@assets/homepage/frameworkopen.jpg";
+import intelTower from "@assets/homepage/inteltower.jpg";
+import keyboard from "@assets/homepage/keyboard.jpg";
+import whiteTower from "@assets/homepage/whitetower.jpg";
 
 <style is:global>{`
 h1,
@@ -12,48 +18,72 @@ h2,
 h3,
 h4, 
 ul li,
-figcaption::before { color: #b1b4c0 }
-body { background: #131212 }
+figcaption::before { color: #131212 }
+body, a:hover { background: #131212 }
 .wrapper, nav::after {background: #395bb5 }
 p, a, ul { color: #b1b4c0}
 `}</style>
 
-# Here is A List of Frequently Used Services for Easy Access
+# Quick Access
 
-Horsa
-<div>
-<a target="_blank" href='https://github.com/juli0n21/horsa'><GithubIcon width="100px" height="100px" /></a>
-<a target="_blank" href="https://horsa.illegalesachen.download"><img src="https://horsa.illegalesachen.download/favicon.ico" heigth="100px" width="100px" /></a>
-<a target="_blank" href="https://horsa-dev.illegalesachen.download"><img src="https://horsa-dev.illegalesachen.download/favicon.ico" heigth="100px" width="100px" /></a>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;">
+
+<div style="text-align:left;">
+#### Horsa
+
+<a target="_blank" href='https://github.com/juli0n21/horsa' title="horsa - github"><GithubIcon width="100px" height="100px" /></a>
+<a target="_blank" href="https://horsa.illegalesachen.download" title="horsa - prod"><img src="https://horsa.illegalesachen.download/favicon.ico" heigth="100px" width="100px" /></a>
+<a target="_blank" href="https://horsa-dev.illegalesachen.download" title="horsa - dev"><img src="https://horsa-dev.illegalesachen.download/favicon.ico" heigth="100px" width="100px" /></a>
 </div>
 
-Fileclap
-<div>
-<a target="_blank" href='https://github.com/juli0n21/fileclap'><GithubIcon width="100px" height="100px" /></a>
-<a target="_blank" href="https://fileclap.com"><img src="https://fileclap.com/assets/favicon.ico" heigth="100px" width="100px" /></a>
+<div style="text-align:right;">
+#### Fileclap
+
+<a target="_blank" href='https://github.com/juli0n21/fileclap' title="fileclap - github"><GithubIcon width="100px" height="100px" /></a>
+<a target="_blank" href="https://fileclap.com" title="fileclap - prod"><img src="https://fileclap.com/assets/favicon.ico" heigth="100px" width="100px" /></a>
 </div>
 
-Server stuff
-<div>
-<a target="_blank" href='https://github.com/juli0n21/deployments'><GithubIcon width="100px" height="100px" /></a>
-<a target="_blank" href="https://argocd.illegalesachen.download/"><img src="https://argo-cd.readthedocs.io/en/stable/assets/logo.png" heigth="100px" width="100px" /></a>
-<a target="_blank" href="https://metrics.illegalesachen.download/"><img src="https://grafana.kami.wtf/public/build/img/apple-touch-icon.png" heigth="100px" width="100px" /></a>
-<a target="_blank" href="https://docker-ui.illegalesachen.download/"><img src="https://docker-ui.illegalesachen.download/favicon.ico" heigth="100px" width="100px" /></a>
+<div style="text-align:left;">
+#### Server stuff
+
+<a target="_blank" href='https://github.com/juli0n21/deployments' title="deployments - github"><GithubIcon width="100px" height="100px" /></a>
+<a target="_blank" href="https://argocd.illegalesachen.download/" title="argocd"><img src="https://argo-cd.readthedocs.io/en/stable/assets/logo.png" heigth="100px" width="100px" /></a>
+<a target="_blank" href="https://metrics.illegalesachen.download/" title="metrics"><img src="https://grafana.kami.wtf/public/build/img/apple-touch-icon.png" heigth="100px" width="100px" /></a>
+<a target="_blank" href="https://docker-ui.illegalesachen.download/" title="docker-ui"><img src="https://docker-ui.illegalesachen.download/favicon.ico" heigth="100px" width="100px" /></a>
 </div>
 
-Osu stuff
-<div>
-<a target="_blank" href='https://github.com/juli0n21/pwa-player'><GithubIcon width="100px" height="100px" /></a>
-<a target="_blank" href='https://github.com/juli0n21/osu-progressCLI'><GithubIcon width="100px" height="100px" /></a>
-<a target="_blank" href='https://github.com/juli0n21/go-osu-parser'><GithubIcon width="100px" height="100px" /></a>
-<a target="_blank" href='https://github.com/juli0n21/osu-progress-oauth-helper'><GithubIcon width="100px" height="100px" /></a>
-<a target="_blank" href='https://github.com/juli0n21/osuprogressserver'><GithubIcon width="100px" height="100px" /></a>
-<a target="_blank" href='https://github.com/juli0n21/osuprogressserver'><GithubIcon width="100px" height="100px" /></a>
+<div style="text-align:right;">
+#### Osu stuff
+
+<a target="_blank" href='https://github.com/juli0n21/pwa-player' title="pwa-player - github"><GithubIcon width="100px" height="100px" /></a>
+<a target="_blank" href='https://github.com/juli0n21/osu-progressCLI' title="osu!ProgressCLI - github"><GithubIcon width="100px" height="100px" /></a>
+<a target="_blank" href='https://github.com/juli0n21/go-osu-parser' title="golang osu Parser - github"><GithubIcon width="100px" height="100px" /></a>
+<a target="_blank" href='https://github.com/juli0n21/osu-progress-oauth-helper' title="osu oauth helper - github"><GithubIcon width="100px" height="100px" /></a>
+<a target="_blank" href='https://github.com/juli0n21/osuprogressserver' title="osu!Progress Server - github"><GithubIcon width="100px" height="100px" /></a>
 </div>
 
-Configuration
-<div>
-<a target="_blank" href='https://github.com/JuLi0n21/publicConfig'><GithubIcon width="100px" height="100px" />nixOS public</a>
-<a target="_blank" href='https://github.com/juli0n21/.nixos'><GithubIcon width="100px" height="100px" /></a>
-<a target="_blank" href='https://github.com/juli0n21/zmk-config'><GithubIcon width="100px" height="100px" /></a>
+<div style="text-align:left;">
+#### Configuration
+
+<a target="_blank" href='https://github.com/JuLi0n21/publicConfig' title="nixos - github"><GithubIcon width="100px" height="100px" /></a>
+<a target="_blank" href='https://github.com/juli0n21/.nixos' title=".nixos - github"><GithubIcon width="100px" height="100px" /></a>
+<a target="_blank" href='https://github.com/juli0n21/zmk-config' title="zmk-config - github"><GithubIcon width="100px" height="100px" /></a>
+<a target="_blank" href='https://github.com/juli0n21/kickstart.nvim' title="kickstart - github"><GithubIcon width="100px" height="100px" /></a>
 </div>
+
+<div style="text-align:left;">
+</div>
+</div>
+
+# Hardware
+
+### Framework 12Inch
+
+<Image src={frameworkClosed} alt={""} />
+<Image src={frameworkOpen} alt={""} />
+### Used Intel Precision Tower
+<Image src={intelTower} alt={""} />
+### Clear Tower White
+<Image src={whiteTower} alt={""} />
+### keyboard
+<Image src={keyboard} alt={""} />
