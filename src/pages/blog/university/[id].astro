@@ -1,6 +1,6 @@
 ---
-import { getCollection, render } from 'astro:content';
-import BlogPost from '@layouts/BlogPost.astro';
+import { getCollection, render } from "astro:content";
+import BlogPost from "@layouts/BlogPost.astro";
 import type {
   InferGetStaticParamsType,
   InferGetStaticPropsType,
@@ -8,11 +8,11 @@ import type {
 } from "astro";
 
 export async function getStaticPaths() {
-    const posts = await getCollection('uni');
-    return posts.map(post => ({
-        params: { id: post.id },
-        props: { post },
-    }));
+  const posts = await getCollection("uni");
+  return posts.map((post) => ({
+    params: { id: post.id },
+    props: { post },
+  }));
 }
 
 getStaticPaths satisfies GetStaticPaths;
@@ -25,5 +25,5 @@ const { Content } = await render(post);
 ---
 
 <BlogPost {...post.data}>
-    <Content />
+  <Content />
 </BlogPost>

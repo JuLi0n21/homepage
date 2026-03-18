@@ -1,52 +1,58 @@
 ---
-import BaseHead from '@components/BaseHead.astro';
-import Header from '@components/Header.astro';
-import GithubIcon from '@assets/github.svg'
+import BaseHead from "@components/BaseHead.astro";
+import Header from "@components/Header.astro";
+import GithubIcon from "@assets/github.svg";
 
 const { title, description, gitLink } = Astro.props;
 ---
 
 <html lang="en">
-	<head>
-		<BaseHead title={title} description={description} />
-		<!-- To add meta data here later -->
-		<style>
-		body { 
-			display:flex; 
-			flex-direction: row;
-		}
-		main { display: flex; 
-			flex-direction: row;
-			align-items: start;
-			justify-content: space-between;
-			padding: 0;
-			margin: 0;
-			flex-grow: 1;
-		}
+  <head>
+    <BaseHead title={title} description={description} />
+    <!-- To add meta data here later -->
+    <style>
+      body {
+        display: flex;
+        flex-direction: row;
+      }
+      main {
+        display: flex;
+        flex-direction: row;
+        align-items: start;
+        justify-content: space-between;
+        padding: 0;
+        margin: 0;
+        flex-grow: 1;
+      }
 
-		.wrapper {
-			display: flex;
-			flex-direction: column;
-			flex-grow: 1;
-			min-width: 0;
-			width: 0;
-			padding: 1cm;
-			margin: 1cm;
-		}
+      .wrapper {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        min-width: 0;
+        width: 0;
+        padding: 1cm;
+        margin: 1cm;
+      }
+    </style>
+  </head>
 
-		</style>
-	</head>
-
-	<body>
-		<main>
-			<Header />
-			<div class="wrapper">
-				<a href={gitLink ?? 'https://github.com/juli0n21'} style="position: relative;">
-					<GithubIcon style="position: absolute; right:0;" width="50px" height="50px" />
-				</a>
-				<slot />
-			</div>
-
-		</main>
-	</body>
+  <body>
+    <main>
+      <Header />
+      <div class="wrapper">
+        <a
+          href={gitLink ?? "https://github.com/juli0n21"}
+          style="position: relative;"
+        >
+          <GithubIcon
+            style="position: absolute; right:0;"
+            width="50px"
+            height="50px"
+          />
+        </a>
+        <slot />
+      </div>
+    </main>
+  </body>
 </html>
