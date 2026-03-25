@@ -10,12 +10,16 @@ h2,
 h3,
 h4, 
 ul li,
-figcaption::before { color: #bb4d00 }
-body {background: #27272a }
-.wrapper, nav::after  {background: #18181b }
-p, a, ul { color: #e2e2e2}
+figcaption::before { color: #ffffff }
+body {background:  #004a5b }
+.wrapper, nav::after  {background: #00747f }
+p, a, ul { color: #8fb0b0}
 img {
     border: 10px solid;
     border-color: #bb4d00; 
 }
 </style>
+
+# Picshare 
+
+<IFrame src="https://picshare.illegalesachen.download" height="800px" />
