@@ -19,3 +19,11 @@ img {
     border-color: #bb4d00; 
 }
 </style>
+
+Mobile Anwendungen
+
+the focus of this module was creating an Mobile Appilcation
+
+Our group decided to create an End-to-End encrypted Messaging App
+
+
