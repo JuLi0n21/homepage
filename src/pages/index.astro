@@ -12,7 +12,7 @@ const response = await fetch(api);
 if (response.ok) {
   const data = await response.json();
   const files = data.files.map(
-    (f: Response) => `https://fshare.kami.boo/raw${f.url.substring(2)}`,
+(f: Response) => `https://shit-cache.illegalesachen.download/${btoa('https://fshare.kami.boo/raw' + f.url.substring(2))}`,
   ) as string[];
 
   const middle = Math.round(files.length / 2);
