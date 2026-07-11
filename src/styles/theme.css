@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+@theme {
+  /* Sticker-board arcade palette */
+  --color-ink: #17102b;
+  --color-paper: #fdf6ec;
+  --color-grape: #8b5cf6;
+  --color-punch: #ff4d8d;
+  --color-lime: #c8f542;
+  --color-sky: #5eead4;
+
+  --font-body: "Atkinson", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Atkinson", ui-sans-serif, system-ui, sans-serif;
+
+  --animate-marquee: marquee 60s linear infinite;
+  --animate-marquee-reverse: marquee-reverse 75s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-wiggle: wiggle 0.4s ease-in-out;
+  --animate-twinkle: twinkle 2.8s ease-in-out infinite alternate;
+  --animate-orbit: orbit 24s linear infinite;
+  --animate-orbit-reverse: orbit-reverse 24s linear infinite;
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @keyframes marquee-reverse {
+    from {
+      transform: translateX(-50%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0) rotate(-1deg);
+    }
+    50% {
+      transform: translateY(-10px) rotate(1deg);
+    }
+  }
+  @keyframes wiggle {
+    0%,
+    100% {
+      transform: rotate(-2deg);
+    }
+    50% {
+      transform: rotate(2deg);
+    }
+  }
+  @keyframes twinkle {
+    from {
+      opacity: 0.45;
+      transform: scale(0.85);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1.15);
+    }
+  }
+  @keyframes orbit {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes orbit-reverse {
+    to {
+      transform: rotate(-360deg);
+    }
+  }
+}
+
+@layer base {
+  @font-face {
+    font-family: "Atkinson";
+    src: url("/fonts/atkinson-regular.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Atkinson";
+    src: url("/fonts/atkinson-bold.woff") format("woff");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-marquee-reverse,
+  .animate-float,
+  .animate-wiggle,
+  .animate-twinkle,
+  .animate-orbit,
+  .animate-orbit-reverse {
+    animation: none;
+  }
+}
