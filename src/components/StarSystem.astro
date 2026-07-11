@@ -1,0 +1,201 @@
+---
+import GithubIcon from "@assets/github.svg";
+import { GITHUB_URL, SITE_AUTHOR, SITE_TAGLINE } from "@ptypes/consts.ts";
+import { getCollection, type CollectionEntry } from "astro:content";
+
+type Post = CollectionEntry<"personal"> | CollectionEntry<"uni">;
+
+const personalPosts = (await getCollection("personal")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+const uniPosts = (await getCollection("uni")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+// Golden-angle spiral: spreads n stars evenly inside the galaxy container (in %)
+function spiral(n: number): { x: number; y: number }[] {
+  return Array.from({ length: n }, (_, i) => {
+    const angle = i * 2.399963;
+    const r = Math.sqrt((i + 0.6) / n) * 40;
+    return {
+      x: 50 + r * Math.cos(angle),
+      y: 50 + r * Math.sin(angle),
+    };
+  });
+}
+
+interface Galaxy {
+  label: string;
+  base: string;
+  posts: Post[];
+  positions: { x: number; y: number }[];
+  glow: string;
+  nebula: string;
+  planet: string;
+  // container placement: mobile-first, md overrides
+  place: string;
+}
+
+const galaxies: Galaxy[] = [
+  {
+    label: "Personal",
+    base: "/blog/personal",
+    posts: personalPosts,
+    positions: spiral(personalPosts.length),
+    glow: "0 0 12px 3px rgba(255, 77, 141, 0.8)",
+    nebula:
+      "radial-gradient(ellipse at center, rgba(255,77,141,0.5), rgba(139,92,246,0.25) 55%, transparent 75%)",
+    planet: "radial-gradient(circle at 35% 35%, #ffd6e5, #ff4d8d 60%, #8b2a53)",
+    place: "left-1/2 top-[24%] md:left-[26%] md:top-[36%]",
+  },
+  {
+    label: "University",
+    base: "/blog/university",
+    posts: uniPosts,
+    positions: spiral(uniPosts.length),
+    glow: "0 0 12px 3px rgba(200, 245, 66, 0.8)",
+    nebula:
+      "radial-gradient(ellipse at center, rgba(200,245,66,0.4), rgba(94,234,212,0.25) 55%, transparent 75%)",
+    planet: "radial-gradient(circle at 35% 35%, #f2ffc2, #c8f542 60%, #5d7a10)",
+    place: "left-1/2 top-[79%] md:left-[73%] md:top-[62%]",
+  },
+];
+
+// Deterministic star dust sprinkled across the whole sky
+let seed = 42;
+const rand = () => {
+  seed = (seed * 9301 + 49297) % 233280;
+  return seed / 233280;
+};
+const dust = Array.from({ length: 60 }, () => ({
+  x: rand() * 100,
+  y: rand() * 100,
+  size: 1 + rand() * 2.5,
+  delay: rand() * 2.8,
+}));
+---
+
+<div class="pointer-events-none absolute inset-0 z-10">
+  {/* star dust */}
+  <div aria-hidden="true" class="absolute inset-0">
+    {
+      dust.map((d) => (
+        <div
+          class="absolute animate-twinkle rounded-full bg-paper"
+          style={`left:${d.x}%;top:${d.y}%;width:${d.size}px;height:${d.size}px;animation-delay:-${d.delay}s`}
+        />
+      ))
+    }
+  </div>
+
+  {/* galaxies */}
+  {
+    galaxies.map((galaxy) => (
+      <nav
+        aria-label={`${galaxy.label} projects`}
+        class:list={[
+          "absolute h-64 w-64 -translate-x-1/2 -translate-y-1/2 sm:h-80 sm:w-80 md:h-[26rem] md:w-[26rem]",
+          galaxy.place,
+        ]}
+      >
+        <div
+          aria-hidden="true"
+          class="absolute inset-[-15%] -rotate-12 rounded-full blur-2xl"
+          style={`background:${galaxy.nebula}`}
+        />
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
+          class="absolute inset-0 h-full w-full overflow-visible"
+        >
+          <polyline
+            points={galaxy.positions.map((p) => `${p.x},${p.y}`).join(" ")}
+            fill="none"
+            stroke="rgba(253,246,236,0.25)"
+            stroke-width="0.4"
+            stroke-dasharray="1.5 2"
+          />
+        </svg>
+        <p class="absolute -top-2 left-1/2 -translate-x-1/2 text-xs font-bold uppercase tracking-[0.35em] text-paper/70 md:text-sm">
+          {galaxy.label}
+        </p>
+        <ul>
+          {galaxy.posts.map((post, i) => {
+            const pos = galaxy.positions[i];
+            const isPlanet = i === 0;
+            return (
+              <li>
+                <a
+                  href={`${galaxy.base}/${post.id}/`}
+                  class="group pointer-events-auto absolute grid -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full p-2 focus-visible:outline-none"
+                  style={`left:${pos.x}%;top:${pos.y}%`}
+                >
+                  {isPlanet ? (
+                    <span class="relative block h-6 w-6 rounded-full transition-transform duration-300 group-hover:scale-125 md:h-8 md:w-8">
+                      <span
+                        class="absolute inset-0 rounded-full"
+                        style={`background:${galaxy.planet}`}
+                      />
+                      <span
+                        aria-hidden="true"
+                        class="absolute left-1/2 top-1/2 h-[45%] w-[170%] -translate-x-1/2 -translate-y-1/2 -rotate-[24deg] rounded-full border border-paper/60"
+                      />
+                    </span>
+                  ) : (
+                    <span
+                      class="block animate-twinkle rounded-full bg-paper transition-transform duration-300 group-hover:scale-150"
+                      style={`width:${8 + ((i * 3) % 6)}px;height:${8 + ((i * 3) % 6)}px;box-shadow:${galaxy.glow};animation-delay:-${(i * 0.7) % 2.8}s`}
+                    />
+                  )}
+                  <span class="absolute left-1/2 top-full max-w-36 -translate-x-1/2 rounded-full bg-ink/85 px-2.5 py-1 text-center text-[11px] leading-tight text-paper/80 transition duration-200 group-hover:bg-grape group-hover:text-paper group-focus-visible:bg-grape group-focus-visible:text-paper md:whitespace-nowrap md:text-xs">
+                    {post.data.title}
+                  </span>
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
+    ))
+  }
+
+  {/* the sun */}
+  <div
+    class="absolute left-1/2 top-[49%] -translate-x-1/2 -translate-y-1/2 md:top-1/2"
+  >
+    <div class="relative mx-auto grid h-32 w-32 place-items-center md:h-44 md:w-44">
+      <div
+        aria-hidden="true"
+        class="absolute inset-0 rounded-full"
+        style="background:radial-gradient(circle at 35% 35%, #ffe9a3, #ffb02e 55%, #ff4d8d 95%);box-shadow:0 0 70px 25px rgba(255,176,46,0.35)"
+      >
+      </div>
+      <p class="relative text-2xl font-bold text-ink md:text-4xl">
+        {SITE_AUTHOR}
+      </p>
+      {/* orbiting github moon */}
+      <div
+        aria-hidden="false"
+        class="absolute inset-[-1.75rem] animate-orbit md:inset-[-2.25rem]"
+      >
+        <a
+          href={GITHUB_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Julian on GitHub"
+          class="pointer-events-auto absolute left-1/2 top-0 grid h-9 w-9 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-paper text-ink shadow-[0_0_14px_4px_rgba(253,246,236,0.4)] transition-transform hover:scale-110 focus-visible:ring-4 focus-visible:ring-punch md:h-10 md:w-10"
+        >
+          <span class="block animate-orbit-reverse">
+            <GithubIcon width="22px" height="22px" fill="currentColor" />
+          </span>
+        </a>
+      </div>
+    </div>
+    <p
+      class="mx-auto mt-12 w-max max-w-[80vw] rounded-full bg-ink/70 px-4 py-1.5 text-center text-xs text-paper/90 md:mt-14 md:text-sm"
+    >
+      {SITE_TAGLINE}
+    </p>
+  </div>
+</div>
